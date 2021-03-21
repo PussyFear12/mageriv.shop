@@ -107,7 +107,7 @@ public class Product {
 
         private ProductBuilder() {}
 
-        public ProductBuilder setUID(int uid) {
+        public ProductBuilder setUid(int uid) {
             Product.this.uid = uid;
             return this;
         }
