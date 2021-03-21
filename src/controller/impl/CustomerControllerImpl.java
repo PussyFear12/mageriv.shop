@@ -8,10 +8,7 @@ import model.enums.UserStatus;
 import payment.Payment;
 import util.Logger;
 
-import java.util.List;
-import java.util.Map;
-import java.util.Objects;
-import java.util.Scanner;
+import java.util.*;
 
 /**
  * @author Admin
@@ -19,6 +16,9 @@ import java.util.Scanner;
 public class CustomerControllerImpl implements CustomerController {
     @Override
     public boolean register(Person person, Map<String, Person> persons) {
+        if (persons.isEmpty()) {
+            persons = new HashMap<>();
+        }
         if (Objects.nonNull(person)) {
             if (!persons.containsKey(person.getLogin())) {
                 persons.put(person.getLogin(), person);

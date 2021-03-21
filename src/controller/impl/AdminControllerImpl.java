@@ -7,6 +7,7 @@ import util.Logger;
 
 import java.time.LocalDateTime;
 import java.util.*;
+import java.util.stream.Collectors;
 
 /**
  * @author Admin
@@ -65,7 +66,6 @@ public class AdminControllerImpl implements AdminController {
     @Override
     public boolean removeProduct(int uid, Set<Product> products) {
         products.removeIf((Product product) -> Objects.equals(uid, product.getUid()));
-
         Logger.log("product [" + uid +"] removed ну або нє хуй зна.");
         return products.stream().noneMatch(product -> uid == product.getUid());
     }

@@ -4,12 +4,18 @@ import model.enums.Status;
 
 import java.util.Objects;
 
+/**
+ * @author Admin
+ */
 public class Product {
     private int uid;
     private String brand;
     private Long value;
     private Double price;
     private Status status;
+    private int count;
+
+    private Product() {}
 
     public int getCount() {
         return count;
@@ -17,16 +23,6 @@ public class Product {
 
     public void setCount(int count) {
         this.count = count;
-    }
-
-    private int count;
-
-    public Product(int uid, String brand, Long value, Double price, Status status) {
-        this.uid = uid;
-        this.brand = brand;
-        this.value = value;
-        this.price = price;
-        this.status = status;
     }
 
     public int getUid() {
@@ -99,5 +95,50 @@ public class Product {
     @Override
     public int hashCode() {
         return Objects.hash(getUid(), getBrand(), getValue(), getPrice(), getStatus());
+    }
+
+
+    public static ProductBuilder newProductBuilder() {
+        return new Product().new ProductBuilder();
+    }
+
+
+    public class ProductBuilder {
+
+        private ProductBuilder() {}
+
+        public ProductBuilder setUID(int uid) {
+            Product.this.uid = uid;
+            return this;
+        }
+
+        public ProductBuilder setBrand(String brand) {
+            Product.this.brand = brand;
+            return this;
+        }
+
+        public ProductBuilder setValue(Long value) {
+            Product.this.value = value;
+            return this;
+        }
+
+        public ProductBuilder setPrice(Double price) {
+            Product.this.price = price;
+            return this;
+        }
+
+        public ProductBuilder setStatus(Status status) {
+            Product.this.status = status;
+            return this;
+        }
+
+        public ProductBuilder setCount(int count) {
+            Product.this.count = count;
+            return this;
+        }
+
+        public Product buildProduct() {
+            return Product.this;
+        }
     }
 }
